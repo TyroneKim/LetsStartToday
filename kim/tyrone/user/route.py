@@ -21,9 +21,11 @@ def user_list():
     return user_dicts
 
 
-@user.route('/user/save', methods=['POST'])
+@user.route('/user/register', methods=['POST'])
 def user_save():
     json = request.json
+    if User.query.filter(User.username==json.get("username")).count() > 0:
+        return '用户名已存在'
     new_user = User()
     new_user.set_attrs(json)
     db.session.add(new_user)
