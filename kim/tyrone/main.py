@@ -2,10 +2,7 @@ from flask import Flask
 
 from kim.tyrone import config
 
-from flask_login import LoginManager
-
 app = Flask(__name__)
-
 
 if __name__ == '__main__':
     config.init(app)

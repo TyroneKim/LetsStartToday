@@ -4,6 +4,7 @@ from kim.tyrone.log import server
 
 log = Blueprint('log', __name__)
 
+
 @log.route('/log/dir/<server>', methods=['POST'])
 def get_log_dir():
     json = request.json

@@ -1,19 +1,16 @@
-from array import array
-
-from flask import Blueprint, request, jsonify
-from sqlalchemy.sql.functions import random
-from sqlalchemy.util import md5_hex
+from flask import Blueprint, request
 
 from kim.tyrone.bean.User import User
 from kim.tyrone.config import db
 
-
 user = Blueprint('user', __name__)
+
 
 @user.route('/user/login', methods=['POST'])
 def login():
     json = request.json
     return json.get('user')
+
 
 @user.route('/user/list', methods=['POST'])
 def user_list():

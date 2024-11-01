@@ -1,13 +1,12 @@
 import uuid
-import json
+
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from kim.tyrone.config import db, login_manager
-from flask_login import login_user, login_required, logout_user, current_user, UserMixin
-from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(db.Model, UserMixin):
-
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -47,6 +46,7 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return {k.lower(): v for k, v in self.__dict__.items() if not k.startswith('_sa')}
+
 
 @login_manager.user_loader
 def load_user(user_id):

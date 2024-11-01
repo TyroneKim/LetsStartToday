@@ -1,8 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+
 
 def mysql(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://tyrone:Kiban410.@172.16.150.128/py-dev'
@@ -16,8 +17,10 @@ def view(app):
     app.register_blueprint(user)
     app.register_blueprint(log)
 
+
 def login(app):
     login_manager.init_app(app)
+
 
 def init(app):
     mysql(app)
