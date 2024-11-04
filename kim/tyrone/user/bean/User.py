@@ -4,12 +4,13 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from kim.tyrone.config import db, login_manager
+from kim.tyrone.core.BaseModel import BaseModel
 
 
-class User(db.Model, UserMixin):
+class User(BaseModel, UserMixin):
     __tablename__ = 'user'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
     username = db.Column(db.String(255), unique=False, nullable=False)
     phone = db.Column(db.String(255), unique=False, nullable=True, default="")
     email = db.Column(db.String(255), unique=False, nullable=True, default="")
@@ -43,9 +44,6 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f'<User {self.username}>'
-
-    def to_dict(self):
-        return {k.lower(): v for k, v in self.__dict__.items() if not k.startswith('_sa')}
 
 
 @login_manager.user_loader

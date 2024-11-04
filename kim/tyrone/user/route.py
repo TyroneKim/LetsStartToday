@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 
-from kim.tyrone.bean.User import User
+from kim.tyrone.user.bean.User import User
 from kim.tyrone.config import db
 
 user = Blueprint('user', __name__)
