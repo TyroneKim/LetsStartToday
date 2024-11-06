@@ -2,6 +2,7 @@ from flask import Blueprint, request
 
 from kim.tyrone.user.bean.User import User
 from kim.tyrone.config import db
+from kim.tyrone.core.bean import R
 
 user = Blueprint('user', __name__)
 
@@ -18,7 +19,7 @@ def user_list():
     user_dicts = []
     for a in users:
         user_dicts.append(a.to_dict())
-    return user_dicts
+    return R.ok(user_dicts).dict()
 
 
 @user.route('/user/register', methods=['POST'])

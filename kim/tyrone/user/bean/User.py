@@ -4,7 +4,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from kim.tyrone.config import db, login_manager
-from kim.tyrone.core.BaseModel import BaseModel
+from kim.tyrone.core.bean.BaseModel import BaseModel
 
 
 class User(BaseModel, UserMixin):
